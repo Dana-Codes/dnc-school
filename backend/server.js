@@ -1,5 +1,5 @@
 //Import the Express.js module
-const express = require('express');
+import express from "express"
 
 //Create a new Express.js application instance
 const app = express();
@@ -15,8 +15,14 @@ app.get('/', (req, res) => {
 	res.send('hello World');
 });
 
+//Add error handling middleware
+app.use((err, req, res, next) => {
+	console.log(err);
+	res.status(500).send('Internal server Error')
+})
+
 //Start the server and listen to port 3000
-app.listen(3000, () => {
+app.listen(4000, () => {
 	console.log('Server started on port 3000');
 });
 
